@@ -1,15 +1,16 @@
 package main
 
 import (
+	"github.com/NIC-Golang/API_gateway_GO_Alimka/database"
 	"github.com/gofiber/fiber/v2"
 )
 
 func main() {
+	database.ConnectDb()
+
 	app := fiber.New()
 
-	app.Get("/", func(c *fiber.Ctx) error {
-		return c.SendString("Hello and uhmmmm, just create cool thing just creat enew thing")
-	})
+	setupRoutes(app)
 
 	app.Listen(":3000")
 }
